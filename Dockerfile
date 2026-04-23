@@ -50,16 +50,15 @@ RUN apk add --no-cache \
     git \
     curl \
     bash \
-    tzdata
+    tzdata \
+    python3 python3-pip
+
+RUN npm install -g openclaw mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
 
 # 设置时区
 ENV TZ=Asia/Shanghai
 ENV NODE_ENV=production
 ENV HOME=/root
-
-# 创建非 root 用户 (可选，主要用于日志查看)
-# RUN addgroup -g 1000 appgroup && \
-#    adduser -u 1000 -G appgroup -s /bin/sh -D appuser
 
 WORKDIR /app
 
