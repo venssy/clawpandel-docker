@@ -58,8 +58,8 @@ ENV NODE_ENV=production
 ENV HOME=/root
 
 # 创建非 root 用户 (可选，主要用于日志查看)
-RUN addgroup -g 1000 appgroup && \
-    adduser -u 1000 -G appgroup -s /bin/sh -D appuser
+# RUN addgroup -g 1000 appgroup && \
+#    adduser -u 1000 -G appgroup -s /bin/sh -D appuser
 
 WORKDIR /app
 
@@ -70,8 +70,8 @@ COPY --from=builder --chown=appuser:appgroup /build/package*.json ./
 COPY --from=builder --chown=appuser:appgroup /build/node_modules ./node_modules
 
 # 创建数据目录
-RUN mkdir -p /app/data && \
-    chown -R appuser:appgroup /app
+RUN mkdir -p /app/data
+#    chown -R appuser:appgroup /app
 
 # 暴露端口
 EXPOSE 1420
