@@ -45,6 +45,8 @@ RUN npm ci --prefer-offline --registry https://registry.npmmirror.com && \
 # -----------------------------------------------------------------------------
 FROM node:22-alpine AS production
 
+COPY --from=python:3.12-slim-bookworm /usr/local /usr/local
+
 # 安装运行时依赖
 RUN apk add --no-cache \
     git \
@@ -55,7 +57,7 @@ RUN apk add --no-cache \
     jq openssh-client unzip \
     && apk cache clean
 
-RUN npm install -g @tobilu/qmd openclaw mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
+RUN npm install -g openclaw mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
 
 # 设置时区
 ENV TZ=Asia/Shanghai
