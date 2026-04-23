@@ -51,9 +51,11 @@ RUN apk add --no-cache \
     curl \
     bash \
     tzdata \
-    python3 python3-pip
+    python3 py3-pip \
+    jq openssh-client unzip \
+    && apk cache clean
 
-RUN npm install -g openclaw mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
+RUN npm install -g @tobilu/qmd openclaw mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
 
 # 设置时区
 ENV TZ=Asia/Shanghai
