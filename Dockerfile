@@ -57,7 +57,7 @@ RUN apk add --no-cache \
     jq openssh-client unzip \
     && apk cache clean
 
-RUN npm install -g openclaw mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
+RUN npm install -g openclaw acpx node-edge-tts playwright-core mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli
 
 # 设置时区
 ENV TZ=Asia/Shanghai
