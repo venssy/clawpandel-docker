@@ -70,7 +70,7 @@ COPY --from=builder --chown=appuser:appgroup /build/scripts ./scripts
 COPY --from=builder --chown=appuser:appgroup /build/package*.json ./
 COPY --from=builder --chown=appuser:appgroup /build/node_modules ./node_modules
 
-RUN npm install -g acpx node-edge-tts playwright-core mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli && npm install -g openclaw && openclaw update
+# RUN npm install -g acpx node-edge-tts playwright-core mcporter pnpm @anthropic-ai/claude-code @openai/codex @google/gemini-cli && npm install -g openclaw && openclaw update
 
 # 创建数据目录
 RUN mkdir -p /app/data
